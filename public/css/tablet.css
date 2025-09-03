@@ -1,0 +1,8 @@
+
+/* Tablet CSS */
+@media (min-width: 768px) {
+    .container {
+        background-color: #ec8b9c;
+    }
+}
+

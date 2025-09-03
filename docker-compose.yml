@@ -1,0 +1,23 @@
+services:
+  api:
+    container_name: website_optimisation_examples_api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: npm run start
+    volumes:
+      - ./:/app
+    ports:
+      - "6464:6464"
+    depends_on:
+      - mysql
+  mysql:
+    image: mariadb:10.5.8
+    container_name: website_optimisation_examples_mysql
+    ports:
+      - 3535:3306
+    volumes:
+      - ./data:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: website_optimisation_examples
+      MYSQL_ROOT_PASSWORD: password

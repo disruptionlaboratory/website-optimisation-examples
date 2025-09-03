@@ -1,0 +1,36 @@
+{
+  "name": "website-optimisation-examples",
+  "version": "1.0.0",
+  "description": "Think of this as a playground to practice website optimisations",
+  "main": "server.js",
+  "scripts": {
+    "test": "jest",
+    "start": "node server.js",
+    "drop-db": "echo \"DROP DATABASE IF EXISTS website_optimisation_examples\" | mysql -u root -h website_optimisation_examples_mysql -ppassword && exit 0",
+    "create-db": "echo \"CREATE DATABASE IF NOT EXISTS website_optimisation_examples CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;\" | mysql -u root -h website_optimisation_examples_mysql -ppassword && exit 0",
+    "apply-schema-and-data-and-changes": "cat db/*.sql | mysql -u root -h website_optimisation_examples_mysql -ppassword website_optimisation_examples --default-character-set=utf8  && exit 0",
+    "rebuild-db": "npm run drop-db && npm run create-db && npm run apply-schema-and-data-and-changes",
+    "css": "cat public/css/reset.css public/css/mobile.css public/css/tablet.css public/css/desktop.css > public/css/main.css && node console/css.js compress"
+  },
+  "dependencies": {
+    "axios": "^1.10.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.0",
+    "express": "^5.1.0",
+    "express-es6-template-engine": "^2.2.3",
+    "joi": "^17.13.3",
+    "mariadb": "^3.4.4",
+    "md5": "^2.3.0",
+    "moment": "^2.30.1",
+    "sequelize": "^6.37.7"
+  },
+  "devDependencies": {
+    "clean-css": "^5.3.3",
+    "commander": "^14.0.0",
+    "jest": "^30.0.4",
+    "prettier": "^3.6.2",
+    "supertest": "^7.1.3"
+  },
+  "author": "",
+  "license": "ISC"
+}
